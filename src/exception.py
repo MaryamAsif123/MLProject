@@ -17,7 +17,8 @@ class CustomException(Exception):
     
     def __str__(self):
         return self.error_message
-    
+
+# testing   
 # if __name__ == "__main__":
 #     try:
 #         a=1/0
