@@ -1,9 +1,9 @@
 import os
 import sys
 from src.exception import CustomException
-import pandas as pd
+import pandas as pd # type: ignore
 
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split # type: ignore
 from dataclasses import dataclass
 from src.components.data_transformation import data_transformation
 

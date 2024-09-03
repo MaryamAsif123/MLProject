@@ -1,13 +1,13 @@
 import os
-import pandas as pd
-import numpy as np
+import pandas as pd # type: ignore
+import numpy as np # type: ignore
 import sys
 
 from src.exception import CustomException
-from sklearn.compose import ColumnTransformer
-from sklearn.impute import SimpleImputer
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.compose import ColumnTransformer # type: ignore
+from sklearn.impute import SimpleImputer # type: ignore
+from sklearn.pipeline import Pipeline # type: ignore
+from sklearn.preprocessing import OneHotEncoder, StandardScaler # type: ignore
 from dataclasses import dataclass
 from src.utils import save_object
 
