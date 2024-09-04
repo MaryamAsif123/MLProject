@@ -34,7 +34,6 @@ class data_transformation:
                steps=[
                    ("imputer", SimpleImputer(strategy="most_frequent")),
                    ("encoding", OneHotEncoder(sparse_output=True)),  
-                   ("scaler", StandardScaler(with_mean=False))  
                ]
            )
            preprocessor = ColumnTransformer(
@@ -53,11 +52,8 @@ class data_transformation:
         train_df = pd.read_csv(train_path)
         test_df = pd.read_csv(test_path)
         preprocessing_obj = self.get_data_transformation_obj()
-        # print(train_df.columns)
-        # print(test_df.columns)
 
         target_column_name="math_score"
-        numerical_columns = ["writing_score", "reading_score"]
 
         input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1)
         target_feature_train_df=train_df[target_column_name]
@@ -76,7 +72,6 @@ class data_transformation:
         save_object(
                 file_path=self.data_transformation_config.preprocessor_obj_filepath,
                 obj=preprocessing_obj
-
             )
 
         return (

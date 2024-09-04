@@ -21,7 +21,6 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         try:
             df=pd.read_csv('notebook\data.csv')
-            # os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
             df.to_csv(self.ingestion_config.raw_data_path,index=False,header=True)
             train_set,test_set=train_test_split(df,test_size=0.2,random_state=42)
             train_set.to_csv(self.ingestion_config.train_data_path,index=False,header=True)
@@ -36,13 +35,13 @@ class DataIngestion:
             raise CustomException(e,sys)
         
 if __name__=="__main__":
-    obj=DataIngestion()
-    train_data,test_data=obj.initiate_data_ingestion()
+    data_ingestion=DataIngestion()
+    train_data,test_data=data_ingestion.initiate_data_ingestion()
 
     data_transformation = data_transformation()
     train_array, test_array,_ =data_transformation.initiate_data_transformation(train_data, test_data)
 
     model_trainer= model_trainer()
-    model_trainer.initiate_model_trainer(train_array, test_array)
+    print(model_trainer.initiate_model_trainer(train_array, test_array))
 
 

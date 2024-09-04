@@ -44,23 +44,22 @@ class model_trainer:
             best_model_name = list(model_report.keys())[
                 list(model_report.values()).index(best_model_score)
             ]
+            
             best_model = models[best_model_name]
 
-            print(best_model_name)
-            print(best_model_score)
-
-
             if best_model_score<0.60:
-                raise CustomException("No best model found")
+                raise CustomException("No best model found")\
+                
             save_object(
                 file_path=self.model_trainer_config.model_trainer_filepath,
                 obj=best_model
             )
 
-            prediction= best_model.predict(x_test)
-            r2score= r2_score(y_test, prediction)
-        
-            return r2score
+            return {
+                "best_model_name": best_model_name,
+                "best_model_score": best_model_score
+            }
+
         
         except Exception as e:
             raise CustomException(e,sys)
